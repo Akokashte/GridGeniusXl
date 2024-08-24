@@ -12,7 +12,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center p-10 bg-slate-800">
       <div className="bg-slate-100 w-full h-screen justify-center rounded-md relative">
         {/* Features Section */}
-        <div className="px-3 bg-red-400 w-full h-auto rounded-r-md items-center flex gap-3">
+        <div className="px-3 py-1 @media bg-red-400 w-full h-auto rounded-r-md  rounded-b-md items-center flex flex-wrap gap-3 ">
           <h1 className="bg-red-400 rounded-t text-lg px-2 font-mono text-center font-extrabold tracking-wide cursor-default select-none absolute left-0 -top-7 text-slate-800">MS Excel App</h1>
 
           {/* Undo Redo */}
