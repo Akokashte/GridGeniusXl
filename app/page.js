@@ -49,6 +49,7 @@ export default function Home() {
               <option value="font 5">font 5</option>
               <option value="font 6">font 6</option>
               <option value="font 7">font 7</option>
+              <option value="font 7">font 8</option>
             </select>
           </div>
 
