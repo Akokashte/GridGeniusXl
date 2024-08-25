@@ -1,43 +1,43 @@
 "use client";
+import useStore from "../store/store";
 
-import { useState } from "react";
-
-const Table = ({ initialGrid }) => {
-  const [grid, setGrid] = useState(initialGrid);
+const Table = () => {
+  const {selectedCell,grid,setSelectedCell,setGridData} = useStore()
 
   const handleCellChange = (rowIndex, colIndex, cellValue) => {
-    const newGrid = [...grid];
+    let newGrid = [...grid];
     newGrid[rowIndex][colIndex] = cellValue;
-    setGrid(newGrid);
+    setGridData(newGrid);
   };
-  console.log(initialGrid);
+
+  console.log(grid)
+  
+  console.log("nice",selectedCell)
+  const handleSelection=(rowIndex,colIndex)=>{
+    console.log(rowIndex,colIndex)
+    setSelectedCell({rowIndex,colIndex})
+  }
+
   return (
     <>
-      <div className="w-full overflow-auto p-2">
-        <table className="table-auto w-full ">
-          {/* <thead>
-                    <tr>
-                        <th>firest</th>
-                        <th>firest</th>
-                        <th>firest</th>
-                        <th>firest</th>
-                    </tr>
-                </thead> */}
+      <div className="w-full h-[29.8rem] overflow-auto p-2">
+        <table className="table-auto overflow-auto w-full ">
           <tbody>
             {grid.map((curRow, rowIndex) => (
               <tr key={rowIndex}>
                 {curRow.map((curCell, colIndex) => (
                   <td
                     key={colIndex}
-                    className="text-slate-800 text-center outline outline-1 "
+                    className="text-slate-800 text-center outline outline-1 hover:outline-black  hover:outline-2"
                   >
                     <input
                       type="text"
                       value={curCell.value}
-                      className="w-full h-full text-center bg-transparent border-none outline-none"
+                      className={selectedCell.rowIndex===rowIndex && selectedCell.colIndex===colIndex ? `w-full h-full text-center bg-transparent border-none outline-none text-red-400 ${curCell.cellFormat}` : `w-full h-full text-center bg-transparent border-none outline-none ${curCell.cellFormat}`}
                       onChange={(e) =>
                         handleCellChange(rowIndex, colIndex, e.target.value)
                       }
+                      onClick={()=>handleSelection(rowIndex,colIndex)}
                     />
                   </td>
                 ))}
