@@ -1,7 +1,10 @@
 const cell = (value = 't', cellFormat = null) => (
     {
         value,
-        cellFormat
+        cellFormat:{
+            fontSize:"",
+            alignMent:""
+        }
     }
 )
 

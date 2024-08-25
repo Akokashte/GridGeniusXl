@@ -6,8 +6,6 @@ import {
   FaAlignCenter,
   FaAlignLeft,
   FaAlignRight,
-  FaPlus,
-  FaMinus,
 } from "react-icons/fa6";
 import { IoIosAdd } from "react-icons/io";
 
@@ -18,23 +16,25 @@ export default function Home() {
   const { grid, selectedCell, setFormatAtIndex } = useStore()
 
   const handleFontChange = (e) => {
-    const formatedStyle = e.target.value
+    const fontSize = e.target.value
     const { rowIndex, colIndex } = selectedCell;
-    console.log(formatedStyle)
+    const formatedStyle = {
+      ...grid[rowIndex][colIndex].cellFormat,
+      fontSize:fontSize
+    }
+
     setFormatAtIndex(rowIndex, colIndex, formatedStyle)
   }
 
   const handleAlignMent = (alignment) => {
     const { rowIndex, colIndex } = selectedCell;
-    const currentCellFormat = grid[rowIndex][colIndex].cellFormat;
-    const currentCellFormatWithSplit = grid[rowIndex][colIndex].cellFormat.split();
-    if(!currentCellFormatWithSplit.includes(alignment)){
-      const formatedStyle = currentCellFormat + " " + alignment
-      setFormatAtIndex(rowIndex, colIndex, formatedStyle)
+    const formatedStyle = {
+      ...grid[rowIndex][colIndex].cellFormat,
+      alignMent:alignment
     }
-    else{
-      alert("already aligned",alignment)
-    }
+
+    setFormatAtIndex(rowIndex, colIndex, formatedStyle)
+
   }
   return (
     <main className="flex h-screen flex-col items-center p-10 bg-slate-800 overflow-auto">
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
 
           {/* Fonts */}
-          <div className="w-max ml-6">
+          {/* <div className="w-max ml-6">
             <select className="p-1 rounded-md w-full text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer"
             >
               <option value="Select Font" disabled selected>
@@ -81,7 +81,7 @@ export default function Home() {
               <option value="">font 6</option>
               <option value="">font 7</option>
             </select>
-          </div>
+          </div> */}
 
           {/* Font Size */}
           <div className="flex gap-2 items-center justify-center ml-6">
