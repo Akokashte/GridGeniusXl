@@ -16,7 +16,7 @@ const useStore = create((set) => ({
   setGridData: (gridData) => {
     set((state) => ({
       grid: gridData,
-      undoStack: [...state.undoStack, state.grid],
+      undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
       redoStack: [],
     }));
   },
@@ -31,7 +31,7 @@ const useStore = create((set) => ({
       );
       return {
         grid: newGrid,
-        undoStack: [...state.undoStack, state.grid],
+        undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
         redoStack: [],
       };
     });
@@ -48,7 +48,7 @@ const useStore = create((set) => ({
       return {
         grid: prevGrid,
         undoStack: newUndoStack,
-        redoStack: [...state.redoStack, state.grid],
+        redoStack: [...state.redoStack, JSON.parse(JSON.stringify(state.grid))],
       };
     });
   },
@@ -65,7 +65,7 @@ const useStore = create((set) => ({
       return {
         grid: nextGrid,
         redoStack: newRedoStack,
-        undoStack: [...state.undoStack, state.grid],
+        undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
       };
     });
   },
