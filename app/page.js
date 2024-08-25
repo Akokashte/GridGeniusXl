@@ -1,6 +1,7 @@
+"use client";
+
 import { LuUndo2, LuRedo2 } from "react-icons/lu";
 import React from "react";
-import { initialGrid } from "@/utils/initialGrid";
 import {
   FaAlignCenter,
   FaAlignLeft,
@@ -11,8 +12,30 @@ import {
 import { IoIosAdd } from "react-icons/io";
 
 import Table from "./components/Table";
+import useStore from "./store/store";
 
 export default function Home() {
+  const { grid, selectedCell, setFormatAtIndex } = useStore()
+
+  const handleFontChange = (e) => {
+    const formatedStyle = e.target.value
+    const { rowIndex, colIndex } = selectedCell;
+    console.log(formatedStyle)
+    setFormatAtIndex(rowIndex, colIndex, formatedStyle)
+  }
+
+  const handleAlignMent = (alignment) => {
+    const { rowIndex, colIndex } = selectedCell;
+    const currentCellFormat = grid[rowIndex][colIndex].cellFormat;
+    const currentCellFormatWithSplit = grid[rowIndex][colIndex].cellFormat.split();
+    if(!currentCellFormatWithSplit.includes(alignment)){
+      const formatedStyle = currentCellFormat + " " + alignment
+      setFormatAtIndex(rowIndex, colIndex, formatedStyle)
+    }
+    else{
+      alert("already aligned",alignment)
+    }
+  }
   return (
     <main className="flex h-screen flex-col items-center p-10 bg-slate-800">
       <div className="bg-slate-100 flex-col  w-full h-full justify-center rounded-md relative">
@@ -38,40 +61,41 @@ export default function Home() {
 
           {/* Left Center Right */}
           <div className="flex gap-4 ml-6">
-            <FaAlignLeft className="cursor-pointer text-black hover:text-red-500 " />
-            <FaAlignCenter className="cursor-pointer text-black hover:text-red-500" />
-            <FaAlignRight className="cursor-pointer text-black hover:text-red-500" />
+            <FaAlignLeft className="cursor-pointer text-black hover:text-red-500 " onClick={() => handleAlignMent("text-left")} />
+            <FaAlignCenter className="cursor-pointer text-black hover:text-red-500" onClick={() => handleAlignMent("text-center")} />
+            <FaAlignRight className="cursor-pointer text-black hover:text-red-500" onClick={() => handleAlignMent("text-right")} />
           </div>
 
           {/* Fonts */}
           <div className="w-max ml-6">
-            <select className="p-1 rounded-md w-full text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer">
+            <select className="p-1 rounded-md w-full text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer"
+            >
               <option value="Select Font" disabled selected>
                 Select Font
               </option>
-              <option value="font 1">font 1</option>
-              <option value="font 2">font 2</option>
-              <option value="font 3">font 3</option>
-              <option value="font 4">font 4</option>
-              <option value="font 5">font 5</option>
-              <option value="font 6">font 6</option>
-              <option value="font 7">font 7</option>
+              <option value="">font 1</option>
+              <option value="">font 2</option>
+              <option value="">font 3</option>
+              <option value="">font 4</option>
+              <option value="">font 5</option>
+              <option value="">font 6</option>
+              <option value="">font 7</option>
             </select>
           </div>
 
           {/* Font Size */}
           <div className="flex gap-2 items-center justify-center ml-6">
-            <FaMinus className="cursor-pointer text-black hover:text-red-500 size-3" />
-            <select className="p-1 rounded-md w-16 text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer">
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-              <option value="14">14</option>
-              <option value="16">16</option>
-              <option value="18">18</option>
-              <option value="20">20</option>
+            <select className="p-1 rounded-md w-16 text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer"
+              onChange={handleFontChange}
+            >
+              <option value="text-xs">8</option>
+              <option value="text-sm">10</option>
+              <option value="text-base">12</option>
+              <option value="text-lg">14</option>
+              <option value="text-xl">16</option>
+              <option value="text-2xl">18</option>
+              <option value="text-3xl">20</option>
             </select>
-            <FaPlus className="cursor-pointer text-black hover:text-red-500 size-3" />
           </div>
 
           <div className="flex gap-1 items-center justify-center ml-6">
@@ -86,7 +110,7 @@ export default function Home() {
         </div>
 
         <div className="h-3/4">
-          <Table initialGrid={initialGrid} />
+          <Table />
         </div>
       </div>
     </main>

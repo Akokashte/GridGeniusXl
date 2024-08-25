@@ -1,25 +1,23 @@
 "use client";
 import useStore from "../store/store";
-import { useState } from "react";
 
-const Table = ({ initialGrid }) => {
-  // const [selected,setSelected] = useState()
-  const [grid, setGrid] = useState(initialGrid);
-  const {selectedCell,setSelectedCell} = useStore()
+const Table = () => {
+  const {selectedCell,grid,setSelectedCell,setGridData} = useStore()
 
   const handleCellChange = (rowIndex, colIndex, cellValue) => {
     let newGrid = [...grid];
     newGrid[rowIndex][colIndex] = cellValue;
-    setGrid(newGrid);
+    setGridData(newGrid);
   };
+
+  console.log(grid)
   
-  // console.log(grid)
   console.log("nice",selectedCell)
   const handleSelection=(rowIndex,colIndex)=>{
     console.log(rowIndex,colIndex)
     setSelectedCell({rowIndex,colIndex})
   }
-  // console.log(initialGrid);
+
   return (
     <>
       <div className="w-full h-[25.8rem] overflow-auto p-2">
@@ -35,7 +33,7 @@ const Table = ({ initialGrid }) => {
                     <input
                       type="text"
                       value={curCell.value}
-                      className={selectedCell.rowIndex===rowIndex && selectedCell.colIndex===colIndex ?"w-full h-full text-center bg-transparent border-none outline-none text-red-400":"w-full h-full text-center bg-transparent border-none outline-none"}
+                      className={selectedCell.rowIndex===rowIndex && selectedCell.colIndex===colIndex ? `w-full h-full text-center bg-transparent border-none outline-none text-red-400 ${curCell.cellFormat}` : `w-full h-full text-center bg-transparent border-none outline-none ${curCell.cellFormat}`}
                       onChange={(e) =>
                         handleCellChange(rowIndex, colIndex, e.target.value)
                       }
