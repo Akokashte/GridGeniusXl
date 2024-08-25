@@ -10,11 +10,12 @@ const Table = ({ initialGrid }) => {
         newGrid[rowIndex, colIndex] = cellValue;
         setGrid(newGrid);
     }
+
     console.log(initialGrid)
     return (
         <>
         <div className="p-2">
-            <table className="table-auto overflow-auto w-full ">
+            <table className="table-auto overflow-auto w-full h-96 ">
                 {/* <thead>
                     <tr>
                         <th>firest</th>
@@ -25,7 +26,7 @@ const Table = ({ initialGrid }) => {
                 </thead> */}
                 <tbody>
                     {
-                        initialGrid.map((curRow, rowIndex) => (
+                        grid.map((curRow, rowIndex) => (
                             <tr key={rowIndex}>
                                 {
                                     curRow.map((curCell, colIndex) => (
