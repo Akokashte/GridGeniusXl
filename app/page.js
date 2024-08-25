@@ -13,7 +13,7 @@ import Table from "./components/Table";
 import useStore from "./store/store";
 
 export default function Home() {
-  const { grid, selectedCell, setFormatAtIndex, undo, redo, undoStack } = useStore()
+  const { grid, selectedCell, setFormatAtIndex, undo, redo, undoStack, addRows, addColumns } = useStore()
 
   const handleFontChange = (e) => {
     const fontSize = e.target.value
@@ -41,8 +41,8 @@ export default function Home() {
       <div className="bg-slate-100 flex-col  w-full h-full justify-center rounded-md relative">
         {/* Features Section */}
         <div className="px-3 py-1 @media bg-slate-200 w-full h-auto rounded-r-md  rounded-b-md items-center flex flex-wrap gap-3 ">
-          <h1 className="bg-red-400 rounded-t text-lg px-2 font-mono text-center font-extrabold tracking-wide cursor-default select-none absolute left-0 -top-7 text-slate-800">
-            MS Excel App
+          <h1 className="bg-black text-white rounded-t text-xl px-2 font-mono text-center font-extrabold tracking-wide cursor-default select-none absolute left-0 -top-7">
+            GridGenius
           </h1>
 
           {/* Undo Redo */}
@@ -66,25 +66,9 @@ export default function Home() {
             <FaAlignRight className="cursor-pointer text-black hover:text-red-500" onClick={() => handleAlignMent("text-right")} />
           </div>
 
-          {/* Fonts */}
-          {/* <div className="w-max ml-6">
-            <select className="p-1 rounded-md w-full text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer"
-            >
-              <option value="Select Font" disabled selected>
-                Select Font
-              </option>
-              <option value="">font 1</option>
-              <option value="">font 2</option>
-              <option value="">font 3</option>
-              <option value="">font 4</option>
-              <option value="">font 5</option>
-              <option value="">font 6</option>
-              <option value="">font 7</option>
-            </select>
-          </div> */}
-
           {/* Font Size */}
           <div className="flex gap-2 items-center justify-center ml-6">
+          Font Sizes
             <select className="p-1 rounded-md w-16 text-center text-sm text-black  bg-slate-100 hover:bg-white cursor-pointer"
               onChange={handleFontChange}
             >
@@ -96,16 +80,6 @@ export default function Home() {
               <option value="text-2xl">18</option>
               <option value="text-3xl">20</option>
             </select>
-          </div>
-
-          <div className="flex gap-1 items-center justify-center ml-6">
-            <h1 className="text-sm text-slate-950 font-medium">Add Row</h1>
-            <IoIosAdd className="cursor-pointer text-black hover:text-red-500 size-5" />
-          </div>
-
-          <div className="flex gap-1 items-center justify-center ml-6">
-            <h1 className="text-sm text-slate-950 font-medium">Add Column</h1>
-            <IoIosAdd className="cursor-pointer text-black hover:text-red-500 size-5" />
           </div>
         </div>
 

@@ -21,6 +21,7 @@ const useStore = create((set) => ({
             redoStack: [],
         }));
     },
+
     setFormatAtIndex: (rowIndex, colIndex, formatedStyle) => {
         set((state) => {
             const newGrid = state.grid.map((row, rIdx) =>
@@ -37,15 +38,14 @@ const useStore = create((set) => ({
             };
         });
     },
+
     undo: () => {
         set((state) => {
             if (state.undoStack.length === 1) {
-                console.log("hi", state.undoStack)
                 return initialGrid;
             }
             const prevGrid = state.undoStack[state.undoStack.length - 2];
             const newUndoStack = state.undoStack.slice(0, -1);
-            console.log(prevGrid)
             return {
                 grid: prevGrid,
                 undoStack: newUndoStack,

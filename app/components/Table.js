@@ -10,18 +10,14 @@ const Table = () => {
     setGridData(newGrid);
   };
 
-  console.log(grid);
-
-  console.log("nice", selectedCell);
   const handleSelection = (rowIndex, colIndex) => {
-    console.log(rowIndex, colIndex);
     setSelectedCell({ rowIndex, colIndex });
   };
 
   return (
     <>
       <div className="w-full h-[32rem] overflow-auto p-2">
-        <table className="table-auto overflow-auto w-full ">
+        <table className="table-fixed overflow-auto w-fit">
           <tbody>
             {grid.map((curRow, rowIndex) => (
               <tr key={rowIndex}>
