@@ -14,7 +14,7 @@ import Table from "./components/Table";
 
 export default function Home() {
   return (
-    <main className="flex h-screen flex-col items-center p-10 bg-slate-800">
+    <main className="flex h-screen flex-col items-center p-10 bg-slate-800 overflow-auto">
       <div className="bg-slate-100 flex-col  w-full h-full justify-center rounded-md relative">
         {/* Features Section */}
         <div className="px-3 py-1 @media bg-slate-200 w-full h-auto rounded-r-md  rounded-b-md items-center flex flex-wrap gap-3 ">
@@ -85,7 +85,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-3/4">
+        <div className="max-w-full max-h-[25.8rem] overflow-auto p-2">
           <Table initialGrid={initialGrid} />
         </div>
       </div>

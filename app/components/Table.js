@@ -6,15 +6,15 @@ const Table = ({ initialGrid }) => {
   const [grid, setGrid] = useState(initialGrid);
 
   const handleCellChange = (rowIndex, colIndex, cellValue) => {
-    const newGrid = [...initialGrid];
-    newGrid[(rowIndex, colIndex)] = cellValue;
+    const newGrid = [...grid];
+    newGrid[rowIndex][colIndex] = cellValue;
     setGrid(newGrid);
   };
   console.log(initialGrid);
   return (
     <>
-      <div className="w-full h-[25.8rem] overflow-auto p-2">
-        <table className="table-auto overflow-auto w-full ">
+      <div className="w-full overflow-auto p-2">
+        <table className="table-auto w-full ">
           {/* <thead>
                     <tr>
                         <th>firest</th>
