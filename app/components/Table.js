@@ -20,7 +20,7 @@ const Table = () => {
 
   return (
     <>
-      <div className="w-full h-[29.8rem] overflow-auto p-2">
+      <div className="w-full h-[32.8rem] overflow-auto p-2">
         <table className="table-auto overflow-auto w-full ">
           <tbody>
             {grid.map((curRow, rowIndex) => (
