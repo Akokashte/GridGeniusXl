@@ -1,5 +1,5 @@
 ## Getting Started
-First clone or pull the repo and then first install node_modules using command "npm i" in terminal
+### First clone or pull the repo and then first install node_modules using command "npm i" in terminal
 
 First, run the development server using : npm run dev
 
