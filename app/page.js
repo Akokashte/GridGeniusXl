@@ -1,4 +1,6 @@
 import { LuUndo2, LuRedo2 } from "react-icons/lu";
+import React from "react";
+import { initialGrid } from "@/utils/initialGrid";
 import {
   FaAlignCenter,
   FaAlignLeft,
@@ -7,10 +9,13 @@ import {
   FaMinus,
 } from "react-icons/fa6";
 
+import Table from "./components/Table";
+
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-10 bg-slate-800">
-      <div className="bg-slate-100 w-full h-screen justify-center rounded-md relative">
+      <div className="bg-slate-100 flex-col  w-full h-screen justify-center rounded-md relative">
         {/* Features Section */}
         <div className="px-3 py-1 @media bg-red-400 w-full h-auto rounded-r-md  rounded-b-md items-center flex flex-wrap gap-3 ">
           <h1 className="bg-red-400 rounded-t text-lg px-2 font-mono text-center font-extrabold tracking-wide cursor-default select-none absolute left-0 -top-7 text-slate-800">MS Excel App</h1>
@@ -67,6 +72,7 @@ export default function Home() {
             <FaPlus className="cursor-pointer text-black hover:text-white size-3" />
           </div>
         </div>
+      <Table initialGrid={initialGrid} />
       </div>
     </main>
   );
