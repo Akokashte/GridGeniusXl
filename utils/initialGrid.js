@@ -1,4 +1,4 @@
-const cell = (value = 't', cellFormat = null) => (
+const cell = (value = '', cellFormat = null) => (
     {
         value,
         cellFormat:{

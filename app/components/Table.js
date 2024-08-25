@@ -28,12 +28,12 @@ const Table = () => {
                 {curRow.map((curCell, colIndex) => (
                 <td
                   key={colIndex}
-                  className="text-slate-800 text-center outline outline-1 "
+                  className="text-slate-800 outline outline-1 "
                 >
                   <input
                     type="text"
                     value={curCell.value}
-                    className={selectedCell.rowIndex === rowIndex && selectedCell.colIndex === colIndex ? `w-full h-full text-center bg-transparent border-none outline-none text-red-400 ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}` : `w-full h-full text-center bg-transparent border-none outline-none ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}`}
+                    className={selectedCell.rowIndex === rowIndex && selectedCell.colIndex === colIndex ? `h-full border-none outline-none text-red-400 ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}` : `h-full border-none outline-none ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}`}
                     onChange={(e) =>
                       handleCellChange(rowIndex, colIndex, e.target.value)
                     }
