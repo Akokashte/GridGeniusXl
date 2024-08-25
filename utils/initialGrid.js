@@ -2,8 +2,8 @@ const cell = (value = 't', cellFormat = null) => (
     {
         value,
         cellFormat:{
-            fontSize:"",
-            alignMent:""
+            fontSize:"text-xs",
+            alignMent:"text-center"
         }
     }
 )
