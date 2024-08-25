@@ -7,6 +7,7 @@ const useStore = create((set) => ({
         colIndex: 0
     },
     grid: initialGrid,
+
     setSelectedCell: (selectedCell) => {
         set((state) => ({ selectedCell: selectedCell }))
     },

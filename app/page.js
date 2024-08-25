@@ -13,7 +13,7 @@ import Table from "./components/Table";
 import useStore from "./store/store";
 
 export default function Home() {
-  const { grid, selectedCell, setFormatAtIndex } = useStore()
+  const { grid, selectedCell, setFormatAtIndex, undo, redo } = useStore()
 
   const handleFontChange = (e) => {
     const fontSize = e.target.value
@@ -37,7 +37,7 @@ export default function Home() {
 
   }
   return (
-    <main className="flex h-screen flex-col items-center p-10 bg-slate-800">
+    <main className="flex h-screen flex-col items-center p-10 bg-slate-800 overflow-auto">
       <div className="bg-slate-100 flex-col  w-full h-full justify-center rounded-md relative">
         {/* Features Section */}
         <div className="px-3 py-1 @media bg-slate-200 w-full h-auto rounded-r-md  rounded-b-md items-center flex flex-wrap gap-3 ">
@@ -47,8 +47,8 @@ export default function Home() {
 
           {/* Undo Redo */}
           <div className="w-max h-10 justify-center items-center flex gap-3">
-            <LuUndo2 className="cursor-pointer text-black hover:text-red-500" />
-            <LuRedo2 className="cursor-pointer text-black hover:text-red-500" />
+            <LuUndo2 className="cursor-pointer text-black hover:text-red-500" onClick={undo}/>
+            <LuRedo2 className="cursor-pointer text-black hover:text-red-500" onClick={redo}/>
           </div>
 
           {/* Search/Filter */}
