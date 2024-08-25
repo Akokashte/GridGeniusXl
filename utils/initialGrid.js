@@ -1,9 +1,9 @@
-const cell = (value = 't', cellFormat = null) => (
+const cell = (value = '', cellFormat = null) => (
     {
         value,
         cellFormat:{
-            fontSize:"",
-            alignMent:""
+            fontSize:"text-xs",
+            alignMent:"text-center"
         }
     }
 )
