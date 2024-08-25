@@ -33,7 +33,7 @@ const Table = () => {
                     <input
                       type="text"
                       value={curCell.value}
-                      className={selectedCell.rowIndex===rowIndex && selectedCell.colIndex===colIndex ? `w-full h-full text-center bg-transparent border-none outline-none text-red-400 ${curCell.cellFormat}` : `w-full h-full text-center bg-transparent border-none outline-none ${curCell.cellFormat}`}
+                      className={selectedCell.rowIndex===rowIndex && selectedCell.colIndex===colIndex ? `w-full h-full text-center bg-transparent border-none outline-none text-red-400 ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}` : `w-full h-full text-center bg-transparent border-none outline-none ${curCell.cellFormat.fontSize} ${curCell.cellFormat.alignMent}`}
                       onChange={(e) =>
                         handleCellChange(rowIndex, colIndex, e.target.value)
                       }
