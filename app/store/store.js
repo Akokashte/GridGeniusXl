@@ -7,7 +7,7 @@ const useStore = create((set) => ({
         colIndex: 0,
     },
     grid: initialGrid,
-    undoStack: [],
+    undoStack: [JSON.parse(JSON.stringify(initialGrid))],
     redoStack: [],
 
     setSelectedCell: (selectedCell) => {
@@ -17,9 +17,10 @@ const useStore = create((set) => ({
     setGridData: (gridData) => {
         set((state) => ({
             grid: gridData,
+            undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
+            redoStack: [],
         }));
     },
-
     setFormatAtIndex: (rowIndex, colIndex, formatedStyle) => {
         set((state) => {
             const newGrid = state.grid.map((row, rIdx) =>
@@ -31,26 +32,25 @@ const useStore = create((set) => ({
             );
             return {
                 grid: newGrid,
-                undoStack: [...state.undoStack, [...newGrid]],
+                undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
+                redoStack: [],
             };
         });
     },
-
     undo: () => {
         set((state) => {
-            console.log("kay re",state.undoStack)
-              if (state.undoStack.length === 0) {
-                return state;
-              }
-
-              const prevGrid = state.undoStack[state.undoStack.length - 1];
-              const newUndoStack = state.undoStack.slice(0, -1);
-              console.log("mast",prevGrid)
-              return {
+            if (state.undoStack.length === 1) {
+                console.log("hi", state.undoStack)
+                return initialGrid;
+            }
+            const prevGrid = state.undoStack[state.undoStack.length - 2];
+            const newUndoStack = state.undoStack.slice(0, -1);
+            console.log(prevGrid)
+            return {
                 grid: prevGrid,
                 undoStack: newUndoStack,
-                redoStack: [...state.redoStack, [...prevGrid]],
-              };
+                redoStack: [...state.redoStack, JSON.parse(JSON.stringify(state.grid))],
+            };
         });
     },
 
@@ -66,7 +66,7 @@ const useStore = create((set) => ({
             return {
                 grid: nextGrid,
                 redoStack: newRedoStack,
-                undoStack: [...state.undoStack, [...nextGrid]],
+                undoStack: [...state.undoStack, JSON.parse(JSON.stringify(state.grid))],
             };
         });
     },

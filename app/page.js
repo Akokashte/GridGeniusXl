@@ -13,14 +13,14 @@ import Table from "./components/Table";
 import useStore from "./store/store";
 
 export default function Home() {
-  const { grid, selectedCell, setFormatAtIndex, undo, redo } = useStore()
+  const { grid, selectedCell, setFormatAtIndex, undo, redo, undoStack } = useStore()
 
   const handleFontChange = (e) => {
     const fontSize = e.target.value
     const { rowIndex, colIndex } = selectedCell;
     const formatedStyle = {
       ...grid[rowIndex][colIndex].cellFormat,
-      fontSize:fontSize
+      fontSize: fontSize
     }
 
     setFormatAtIndex(rowIndex, colIndex, formatedStyle)
@@ -30,7 +30,7 @@ export default function Home() {
     const { rowIndex, colIndex } = selectedCell;
     const formatedStyle = {
       ...grid[rowIndex][colIndex].cellFormat,
-      alignMent:alignment
+      alignMent: alignment
     }
 
     setFormatAtIndex(rowIndex, colIndex, formatedStyle)
@@ -47,8 +47,8 @@ export default function Home() {
 
           {/* Undo Redo */}
           <div className="w-max h-10 justify-center items-center flex gap-3">
-            <LuUndo2 className="cursor-pointer text-black hover:text-red-500" onClick={undo}/>
-            <LuRedo2 className="cursor-pointer text-black hover:text-red-500" onClick={redo}/>
+            <LuUndo2 className={`cursor-pointer text-black hover:text-red-500`} onClick={undo} />
+            <LuRedo2 className={`cursor-pointer text-black hover:text-red-500`} onClick={redo} />
           </div>
 
           {/* Search/Filter */}
