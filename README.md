@@ -37,6 +37,6 @@ The application provides a spreadsheet with the following features:
 3. **React.js:** For building user interfaces.
 4. **HTML:** For structuring content.
 5. **JavaScript:** For functionality.
-6. **JustAnd Store:** For state management
+6. **Zustand Store:** For state management
 
 
