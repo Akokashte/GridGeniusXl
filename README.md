@@ -1,23 +1,42 @@
+# Grid Genius XL
+
+[Live Project Link](https://grid-genius-xl.vercel.app/)
+
 ## Getting Started
-### First clone or pull the repo and then first install node_modules using command "npm i" in terminal
 
-First, run the development server using : npm run dev
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before you begin, ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 
+### Installation
 
-then xlsheet will appear having following features :-
--> Font size :- by selecting cell and then toggling font size from selecting options.
--> Text Alignment :- by selecting cell and clicking on alignment provided text can be aligned within cell of grid.
--> Undo
--> Redo
+1. **Clone or pull the repository:**
 
-Technology or tools used :-
--> nextJs
--> Tailwind Css for styling
--> ReactJs
--> HTML
--> Javascript
--> justand store for state management
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+
+2. **Install dependencies:**
+   ```bash
+   npm i
+
+3. **Start the development server with:**
+   ```bash
+   npm run dev
+   
+### Features
+The application provides a spreadsheet with the following features:
+
+1. **Font Size:** Adjust the font size by selecting a cell and toggling the font size options.
+2. **Text Alignment:** Align text within a cell using the provided alignment options.
+3. **Undo/Redo:** Use the undo and redo functionality to manage changes.
+
+### This project uses the following technologies:
+
+1. **Next.js:** For server-side rendering and routing.
+2. **Tailwind CSS:** For styling.
+3. **React.js:** For building user interfaces.
+4. **HTML:** For structuring content.
+5. **JavaScript:** For functionality.
+6. **JustAnd Store:** For state management
 
 
